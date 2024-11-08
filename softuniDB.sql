@@ -1617,3 +1617,35 @@ INSERT INTO `towns` (`town_id`, `name`) VALUES
     
     SET GLOBAL FOREIGN_KEY_CHECKS=0;
 
+/*zaqvki*/
+
+/*1.Напишете SQL заявка, за да намерите цялата налична информация за отделите.*/
+select department_id as department, `name` as name, manager_id as managerId from departments order by department_id asc;
+
+/*2.Напишете SQL заявка, за да намерите всички имена на отдел.*/
+select `name` as DepartmentNames from departments;
+
+/*3.Напишете SQL заявка, която намера собственото име, фамилното име и заплата на всеки служител.*/
+select first_name as FirstNames, last_name as FamNames, salary as Salary from employees;
+
+/*4.Напишете SQL заявка, която намира личното, бащиното и фамилното име на всеки служител. */
+select first_name as FirstNames,middle_name as MidName, last_name as FamNames from employees;
+
+/*5.Напишете SQL заявка, която намира имейл адреса на всеки служител. (от неговото собствено и фамилно име).
+ приемете, че имейл домейна е softuni.bg. Имейлите трябва да изглеждат като "John.Doe@softuni.bg". 
+ Резултатната колона трябва да бъде наречена "full_ email_address".*/
+SELECT CONCAT(first_name,'.', last_name,'@softuni.bg') AS full_email_address from employees;
+
+/*6.Напишете SQL заявка, за да намерите всичките различни работни заплати. Покажи само заплатите. */
+select salary as Salary from employees group by Salary  order by Salary asc;
+
+/*7.Напишете SQL заявка, за да намерите цялата информация за служителите, чиято длъжност е "Търговски представител" ( Sales Representative ). */
+select * from employees where job_title = 'Sales Representative ';
+
+/*8.Напишете SQL заявка, която намира личното име, фамилно име и длъжност на всички служители, чиято заплата е в диапазона [20000, 30000].  */
+select first_name,last_name,job_title from employees where salary between 20000 and 30000;
+
+/*9.Напишете SQL заявка, която намира пълното име на всички служители, чиято заплата е 25000, 14000, 12500 или 23600. 
+Пълното име е комбинация от личното, бащиното и фамилното име (разделени с единичен интервал) 
+и те трябва да бъдат в една колона, наречена "Пълно име" “Full Name”. */ 
+select concat (first_name,' ', last_name) as 'Full Name' from employees where salary = 25000 or 14000 or 12500 or 23600;

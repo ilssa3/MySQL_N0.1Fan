@@ -1631,6 +1631,7 @@ select first_name as FirstNames, last_name as FamNames, salary as Salary from em
 /*4.Напишете SQL заявка, която намира личното, бащиното и фамилното име на всеки служител. */
 select first_name as FirstNames,middle_name as MidName, last_name as FamNames from employees;
 
+
 /*5.Напишете SQL заявка, която намира имейл адреса на всеки служител. (от неговото собствено и фамилно име).
  приемете, че имейл домейна е softuni.bg. Имейлите трябва да изглеждат като "John.Doe@softuni.bg". 
  Резултатната колона трябва да бъде наречена "full_ email_address".*/
@@ -1649,3 +1650,26 @@ select first_name,last_name,job_title from employees where salary between 20000 
 Пълното име е комбинация от личното, бащиното и фамилното име (разделени с единичен интервал) 
 и те трябва да бъдат в една колона, наречена "Пълно име" “Full Name”. */ 
 select concat (first_name,' ', last_name) as 'Full Name' from employees where salary = 25000 or 14000 or 12500 or 23600;
+
+/*10.Напишете SQL заявка да намери собствено и фамилно име за тези служители, които не са мениджъри.*/
+select first_name, last_name from employees where not job_title = '+Manager' ;
+
+/*11.Напишете SQL заявка, която намира собственото име, фамилното име и заплатата на тези служители,
+ които имат заплата повече от 50000. Подредете ги в намаляващ ред от заплата. */
+ select first_name,last_name,salary from employees where salary > 50000 order by salary desc;
+ 
+ /*12.Напишете SQL заявка, която намира собственото и фамилното име на 5 най-добре платени служители, подредени в низходящ ред по заплата */
+SELECT first_name,last_name,salary from employees order by salary desc limit 5;
+
+/*13.Напишете SQL заявка, която намира собственото и фамилното име на всички служители чиито номер на отдел е различен от 4. */
+Select first_name, last_name from employees where not department_id = 4 ;
+
+/*14.Напишете SQL заявка,която  намира всички различни длъжности. */
+Select job_title from employees group by job_title;
+
+/*15.Напишете SQL заявка, която намира първите 10 започнати проекти. 
+Изберете цялата информация за тях и ги подредете по начална дата, след това по име. */
+select * from projects order by start_date, name asc;
+
+/*16.Напишете SQL заявка, която намира последните 7 наети служители. 
+Изберете техните собствени имена, фамилни имена и датата им на наемане*/

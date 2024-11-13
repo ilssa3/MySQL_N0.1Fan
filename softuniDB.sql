@@ -1673,3 +1673,38 @@ select * from projects order by start_date, name asc;
 
 /*16.Напишете SQL заявка, която намира последните 7 наети служители. 
 Изберете техните собствени имена, фамилни имена и датата им на наемане*/
+select first_name,last_name,hire_date from employees order by hire_date desc limit 7;
+
+/*17.Напишете SQL заявка за увеличаване на заплатите на всички служители, които са  в отделите Engineering,
+ Tool Design, Marketing или Information Services с 12 %. След това изберете колоната със заплатите  от таблицата Emmployees. */
+ update employees set salary = salary + (12/100)*salary where department_id = 1 or 2  or 4 or 11;
+ select salary from employees where  department_id = 1 or 2  or 4 or 11;
+ 
+ /*ФАЙЛ 2 */
+ 
+/*1.Използвайте базата данни на SoftUni и вмъкнете някои данни, като SQL заявки. 
+•	towns: Sofia, Plovdiv, Varna, Burgas
+•	departments: Engineering, Sales, Marketing, Software Development, Quality Assurance
+•	employees:
+*/
+
+INSERT  INTO TOWNS(town_id, `name`)
+VALUES
+( default ,'Plovdiv'),
+( default,'Varna'),
+( default,'Burgas');
+
+/*2.Използвайте базата данни  softuni и първо изберете всички записи от towns, 
+след това от departments и накрая от таблица employees*/ 
+select*from towns
+cross join departments 
+cross join employees;
+
+/*3.Променете  заявките от предишните задачи за да се показват само някои от колоните. За таблица: 
+•	towns – name
+•	department –name
+•	employees – first_name, last_name, job_title, salary
+*/
+select `name` from towns
+cross join departments on `name`
+cross join employees on `first_name`and `last_name`and`job_title`and`salary`;

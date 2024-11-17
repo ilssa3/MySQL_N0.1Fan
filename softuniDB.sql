@@ -1705,6 +1705,6 @@ cross join employees;
 •	department –name
 •	employees – first_name, last_name, job_title, salary
 */
-select `name` from towns
-cross join departments on `name`
-cross join employees on `first_name`and `last_name`and`job_title`and`salary`;
+select `name` from towns;
+select `name` from departments ;
+select first_name, last_name, job_title, salary from employees;

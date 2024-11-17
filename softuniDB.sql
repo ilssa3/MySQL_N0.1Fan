@@ -1708,3 +1708,7 @@ cross join employees;
 select `name` from towns;
 select `name` from departments ;
 select first_name, last_name, job_title, salary from employees;
+
+/*4.Използвайте базата от данни softuni и увеличете заплатата на всички служители с 10 %. Изберете само колоната salary от таблицата на служителите.*/
+ update employees set salary = salary + (10/100)*salary ;
+ select salary from employees;
